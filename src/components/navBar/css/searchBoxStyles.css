@@ -1,0 +1,10 @@
+.search-width{
+    max-width:68% !important;
+}
+
+
+@media only screen and (min-width: 768px) {
+    .search-width{
+        max-width:40% !important;
+    }
+}
