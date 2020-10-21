@@ -39,7 +39,7 @@ const Searchbox = (props) => {
   },[category,itemName])
 
   return (
-      <InputGroup className="search-width" size="sm">
+      <InputGroup className="search-width" size="sm" style={{maxWidth:"5rem"}}>
         <InputGroupAddon addonType="prepend">
           <UncontrolledButtonDropdown >
             <DropdownToggle caret color="info" size="sm" className="w-25">

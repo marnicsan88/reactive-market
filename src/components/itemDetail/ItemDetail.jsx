@@ -12,7 +12,7 @@ const ItemDetail = (props) => {
     const [cantidad,setCantidad] = useState(params.initial)
     const [sePuedeComprar,setSePuedeComprar] = useState(false)
     const [modal, setModal] = useState(false);
-    const {setCart} = useContext(CartContext);
+    const {cart,setCart} = useContext(CartContext);
     
     const toggle = () => {
         if(modal)
@@ -29,7 +29,14 @@ const ItemDetail = (props) => {
     }
 
     const agregarCarrito = () => {
-        setCart(carrito => [...carrito,{item:props.item,cantidad:cantidad}])
+        const cItems = cart;
+        const itemIdx = cItems.findIndex(i => i.item.id === props.item.id)
+        if(itemIdx > -1){
+            cItems[itemIdx].cantidad += cantidad;
+            setCart([...cItems])
+        }else{
+            setCart(carrito => [...carrito,{item:props.item,cantidad:cantidad}])
+        }
         toggle()
     }
 

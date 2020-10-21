@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import ItemListContainer from '../components/itemList/ItemListContainer';
 import Loading from '../components/loading/Loading';
 import {getFirestore} from '../firebase';
+import "./css/styles.css"
 
 const Home = (props) => {
     const [items,setItems] = useState([]);
@@ -25,7 +26,7 @@ const Home = (props) => {
     },[]);
 
     return (
-        <div className="container-fluid">
+        <div className="container-fluid bodyContainer">
             <div style={{textAlign:"center"}}>
                 {props.greeting} <label style={{fontWeight:"bolder"}}>{props.nombre}</label>
             </div>

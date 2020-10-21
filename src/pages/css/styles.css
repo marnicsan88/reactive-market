@@ -1,0 +1,11 @@
+.bodyContainer{
+    min-height:80vh;
+    padding-bottom:1rem;
+    box-sizing: border-box;
+}
+
+.titulo{
+    padding-top:1.5rem;
+    padding-bottom:2rem;
+    padding-left:1.5rem;
+}

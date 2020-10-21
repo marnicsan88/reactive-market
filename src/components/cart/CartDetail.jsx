@@ -10,14 +10,14 @@ export default function CartDetail(){
         <Container>
             <Row xs="1" md="12" className="justify-content-md-center" style={{textAlign:"center"}}>
                 <Col className="col-md-7">
-                    {cart.map(cartItem => <CartItem key={cartItem.item.key} item={cartItem.item} cantidad={cartItem.cantidad}/>)}
+                    {cart.map(cartItem => <CartItem key={cartItem.item.key} image={cartItem.item.image} nombre={cartItem.item.nombre} valor={cartItem.item.valor} cantidad={cartItem.cantidad}/>)}
                 </Col>
                 <Col className="col-md-5">
                     <div style={{paddingBottom:"1.5rem",paddingLeft:"2rem",paddingRight:"3rem",boxSizing:"border-box",border:"1px solid #a45087",borderRadius:"8px"}}>
                         <h2>Total</h2>
                         <div style={{textAlign:"right",marginTop:"1rem",marginBottom:"1rem"}}><h4 style={{fontWeight:"bold"}}>${calcularTotal()}</h4></div>
                         <NavLink to="/checkout">
-                            <Button color="primary" style={{width:"100%"}}>Continuar Compra</Button>
+                            <Button color="primary" style={{width:"100%"}}>Finalizar Compra</Button>
                         </NavLink>
                     </div>
                 </Col>

@@ -1,5 +1,6 @@
 # Reactive Market
 Un Ecommerce simple desarrollado con React y Hooks
+![Reactive Market Screenshot](https://imagizer.imageshack.com/img922/6379/vT5CYC.png)
 
 ## Tu Ecommerce de Potter Hechizos :shopping_cart: :mage:
 A traves de este Ecommerce podrás adquirir disitintos hechizos, conjuros y maleficios del mundo de Harry Potter.

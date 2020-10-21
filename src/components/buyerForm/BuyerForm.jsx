@@ -62,7 +62,7 @@ const BuyerForm = (props) => {
             </FormGroup>
           </Col>
         </Row>
-        <Button color="danger" style={{width:"100%"}} onClick={finalizarCompra} disabled={!props.cantItems}>Finalizar Compra</Button>
+        <Button color="danger" style={{width:"100%"}} onClick={finalizarCompra} disabled={!props.cantItems}>Comprar</Button>
       </Form>
     );
   }

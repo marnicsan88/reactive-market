@@ -5,6 +5,7 @@ import ErrorMsg from '../components/msg/ErrorMsg';
 import {Container, Row, Col} from 'reactstrap';
 import {useParams} from 'react-router-dom';
 import { getFirestore } from '../firebase/index'
+import "./css/styles.css"
 
 const ItemDetailContainer = () => {
     const {idItem} = useParams();
@@ -30,15 +31,17 @@ const ItemDetailContainer = () => {
     },[idItem]);
 
     return(
-        loading ? <Loading msg="CARGANDO"/> : (
-            <Container fluid>
-                <Row style={{textAlign:"center"}}>
-                    <Col style={{display:"flex",justifyContent:"center"}}>
-                        {item ? <ItemDetail item={item}/> : <ErrorMsg msg="No se encontró Spell"/>}
-                    </Col>
-                </Row>
-            </Container>
-        )
+        <div className="bodyContainer">
+            {loading ? <Loading msg="CARGANDO"/> : (
+                <Container fluid>
+                    <Row style={{textAlign:"center"}}>
+                        <Col style={{display:"flex",justifyContent:"center"}}>
+                            {item ? <ItemDetail item={item}/> : <ErrorMsg msg="No se encontró Spell"/>}
+                        </Col>
+                    </Row>
+                </Container>
+            )}
+        </div>
     )
 }
 

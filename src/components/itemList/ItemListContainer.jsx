@@ -7,7 +7,7 @@ function ItemListContainer({items}){
 
     return(
         !items.length?<ErrorMsg msg="No se encontraron Items"/>:
-        <Container fluid={true}>
+        <Container fluid={true} style={{minHeight:"59vh"}}>
             <Row xs="1" sm="2" md="3" lg="4" className="justify-content-md-center" style={{textAlign:"center"}}>
                 <ItemList data={items}/>
             </Row>

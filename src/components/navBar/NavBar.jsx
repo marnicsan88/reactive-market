@@ -39,7 +39,7 @@ const NavPpal = () => {
         <Searchbox categorias={categories} />
         <div style={{display:displayFlex, justifyContent:"center"}}>
           <NavLink to="/cart" className="text-white icon-link px-1 px-sm-3 px-md-4"><CartIcon/></NavLink>
-          <NavLink to="/" className="text-white icon-link px-1 px-sm-3 px-md-4">{usuario}</NavLink>
+          <NavLink to="/orders" className="text-white icon-link px-1 px-sm-3 px-md-4">{usuario}</NavLink>
         </div>
       </Navbar>
   );

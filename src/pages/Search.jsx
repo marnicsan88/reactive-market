@@ -3,6 +3,7 @@ import {useLocation} from 'react-router-dom';
 import {getFirestore} from '../firebase';
 import Loading from '../components/loading/Loading';
 import ItemListContainer from '../components/itemList/ItemListContainer'
+import "./css/styles.css"
 
 const useQuery = () => {
     return new URLSearchParams(useLocation().search);
@@ -27,9 +28,9 @@ export default function Search(){
         const itemCollection = db.collection("spells")
         let itemQuery = itemCollection;
         if(catFilter && catFilter !== "-1" && itemName){
-            itemQuery = itemQuery.where("idCategoria","==", getCategoryRef(catFilter)).where("nombre","==", itemName)
+            itemQuery = itemQuery.where("idCategoria","==", getCategoryRef(catFilter)).where("nombre","==", itemName).limit(20)
         }else if(catFilter && catFilter !== "-1" && !itemName){
-            itemQuery = itemQuery.where("idCategoria","==", getCategoryRef(catFilter))
+            itemQuery = itemQuery.where("idCategoria","==", getCategoryRef(catFilter)).orderBy("nombre").limit(20)
         }else if(itemName)
             itemQuery = itemQuery.where("nombre","==", itemName)
         itemQuery.get().then((querySnapshot) => {
@@ -48,12 +49,12 @@ export default function Search(){
 
 
     return(
-        <>
-            <div style={{marginTop:"1.5rem",marginBottom:"2rem",marginLeft:"1.5rem"}}>
-                <h1 style={{display:"inline"}}>{catName?(/([aeiou])$/g.test(catName.substring(catName.length-1))?`${catName}s`:`${catName}es`):"Resultados"}</h1>
+        <div className="bodyContainer">
+            <>
+                <h1 className="titulo">{catName?(/([aeiou])$/g.test(catName.substring(catName.length-1))?`${catName}s`:`${catName}es`):"Resultados"}</h1>
                 {itemName?<h2 style={{display:"inline"}}>&nbsp;para <strong>{itemName}</strong></h2>:""}
-            </div>
+            </>
             {loading?<Loading msg="CARGANDO"/>:<ItemListContainer items={items}/>}
-        </>
+        </div>
     )
 }
