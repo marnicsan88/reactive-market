@@ -36,7 +36,7 @@ const NavPpal = () => {
           <img src="https://imagizer.imageshack.com/img922/9889/P9I7Vu.png" alt="Reactive Market Logo" className="d-none d-sm-block"/>
           <img src="https://imagizer.imageshack.com/img923/6550/2RSH3p.png" alt="Reactive Market Logo" className="d-block d-sm-none"/>
         </NavLink>
-        <Searchbox categorias={categories} />
+        <Searchbox categorias={categories}/>
         <div style={{display:displayFlex, justifyContent:"center"}}>
           <NavLink to="/cart" className="text-white icon-link px-1 px-sm-3 px-md-4"><CartIcon/></NavLink>
           <NavLink to="/orders" className="text-white icon-link px-1 px-sm-3 px-md-4">{usuario}</NavLink>

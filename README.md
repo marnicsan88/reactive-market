@@ -8,9 +8,11 @@ La Home te dará una cálida bienvenida y te mostrará el catalogo de hechizos, 
 
 Accediendo al detalle de cada hechizo se podrá apreciar el efecto que causa el hechizo y se podrá indicar la cantidad que deseamos adquirir de dicho hechizo, siempre y cuando haya stock disponible.
 
-Los hechizos se irán agregando al carrito de compras, el cual se podrá acceder desde el icono de carrito en la barra de navegación.
+Los hechizos se irán agregando al carrito de compras, al cual se podrá acceder desde el icono de carrito en la barra de navegación.
 
 Una vez conforme con los hechizos agregados al carrito podremos pasar al checkout donde se deberá completar un formulario de datos personales para poder finalizar la compra y generar la correspondiente orden de compra.
+
+Posteriormente podrán consultarse todas las odenes generandas utilizando el nro. de orden informado por el sistema al completar la compra. A la consulta se accede desde el icono de usuario de la barra de navegacion.
 
 ## Tecnicismos
 
@@ -30,7 +32,7 @@ Una vez conforme con los hechizos agregados al carrito podremos pasar al checkou
 
 ### :computer: Installation
     $ git clone https://github.com/marnicsan88/reactive-market.git
-    $ cd react-todolist
+    $ cd reactive-market
     $ npm install
 
 ### :rocket: `npm start`
