@@ -3,6 +3,7 @@ import {useLocation} from 'react-router-dom';
 import {getFirestore} from '../firebase';
 import Loading from '../components/loading/Loading';
 import ItemListContainer from '../components/itemList/ItemListContainer'
+import {useParams} from 'react-router-dom';
 import "./css/styles.css"
 
 const useQuery = () => {
@@ -10,15 +11,23 @@ const useQuery = () => {
 }
 
 export default function Search(){
+    const {idCategoria} = useParams();
+    const {filtro} = useParams();
+    const [categoria,setCategoria] = useState("");
     const [items,setItems] = useState([]);
     const [loading,isLoading] = useState(true);
-    const catName = useQuery().get("catName")
-    const catFilter = useQuery().get("categoryId")
-    const itemName = useQuery().get("itemName")
 
-    const getCategoryRef = (categoryId) => {
+    const getCategoryRef = () => {
         const db = getFirestore();
-        const categoryDocRef = db.collection('categories').doc(categoryId);
+        const categoryDocRef = db.collection('categories').doc(idCategoria)
+        categoryDocRef.get().then((doc) => {
+            if(!doc.size){
+                console.log("No Data");
+            }
+            setCategoria(doc.data().descripcion)
+        }).catch(error => {
+            console.log("ERROR ",error)
+        })
         return categoryDocRef;
     }
 
@@ -27,12 +36,15 @@ export default function Search(){
         const db = getFirestore();
         const itemCollection = db.collection("spells")
         let itemQuery = itemCollection;
-        if(catFilter && catFilter !== "-1" && itemName){
-            itemQuery = itemQuery.where("idCategoria","==", getCategoryRef(catFilter)).where("nombre","==", itemName).limit(20)
-        }else if(catFilter && catFilter !== "-1" && !itemName){
-            itemQuery = itemQuery.where("idCategoria","==", getCategoryRef(catFilter)).orderBy("nombre").limit(20)
-        }else if(itemName)
-            itemQuery = itemQuery.where("nombre","==", itemName)
+        if(idCategoria){
+            if(filtro){
+                itemQuery = itemQuery.where("idCategoria","==", getCategoryRef()).where("nombre","==", filtro).limit(20)
+            }else{
+                itemQuery = itemQuery.where("idCategoria","==", getCategoryRef()).orderBy("nombre").limit(20)
+            }
+        }else if(filtro){
+            itemQuery = itemQuery.where("nombre","==", filtro)
+        }
         itemQuery.get().then((querySnapshot) => {
             if(!querySnapshot.size){
                 console.log("No Data");
@@ -45,16 +57,18 @@ export default function Search(){
         }).finally(
             () => {isLoading(false);
         });
-    },[catFilter,itemName]);
-
+    },[idCategoria,filtro]);
 
     return(
-        <div className="bodyContainer">
+        <div className="bodyContainer">{
+            loading ? <Loading msg="CARGANDO"/> : 
             <>
-                <h1 className="titulo">{catName?(/([aeiou])$/g.test(catName.substring(catName.length-1))?`${catName}s`:`${catName}es`):"Resultados"}</h1>
-                {itemName?<h2 style={{display:"inline"}}>&nbsp;para <strong>{itemName}</strong></h2>:""}
+                <div style={{marginTop:"1.5rem",marginBottom:"2rem",marginLeft:"1.5rem"}}>
+                    <h1 style={{display:"inline"}}>{categoria?(/([aeiou])$/g.test(categoria.substring(categoria.length-1))?`${categoria}s`:`${categoria}es`):"Resultados"}</h1>
+                    {filtro?<h2 style={{display:"inline"}}>&nbsp;para <strong>{filtro}</strong></h2>:""}
+                </div>
+                <ItemListContainer items={items}/>
             </>
-            {loading?<Loading msg="CARGANDO"/>:<ItemListContainer items={items}/>}
-        </div>
+        }</div>
     )
 }

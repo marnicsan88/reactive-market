@@ -22,7 +22,7 @@ export default function App() {
             <Route exact path="/">
               <Home greeting="Bienvenido" nombre="Tincho"/>
             </Route>
-            <Route path="/search">
+            <Route exact path={["/categories/:idCategoria","/categories/:idCategoria/search/:filtro","/search/:filtro","/search"]}>
               <Search />
             </Route>
             <Route exact path="/item/:idItem">

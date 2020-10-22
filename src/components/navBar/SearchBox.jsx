@@ -7,8 +7,7 @@ import { NavLink } from 'react-router-dom'
 import './css/searchBoxStyles.css';
 
 const Searchbox = (props) => {
-  const [category,setCategory] = useState(-1);
-  const [catName,setCatName] = useState("");
+  const [category,setCategory] = useState("");
   const [itemName,setItemName] = useState("");
   const [filterDestination,setFilterDestination] = useState("");
 
@@ -16,26 +15,17 @@ const Searchbox = (props) => {
 
   const selectOption = (evt) => {
     document.querySelectorAll("button.dropdown-toggle")[0].textContent = evt.target.textContent;
-    setCategory(evt.target.id);
-    setCatName(evt.target.textContent);
+    document.querySelector("#spellFilter").value = "";
+    setItemName("");
+    evt.target.id != "-1" ? setCategory(`/categories/${evt.target.id}/`) : setCategory(`/`);
   }
 
   const nameItemChange = (evt) => {
-    setItemName(evt.target.value)
+    setItemName(`search/${evt.target.value}`)
   }
 
   useEffect(() => {
-    let destino = "/search?";
-    const catFilter = category != -1 ? `categoryId=${category}&catName=${catName}` : "";
-    const namFilter = itemName ? `itemName=${itemName}` : "";
-    if(!catFilter && !namFilter){
-      destino = "/"
-    }else if(catFilter && namFilter){
-      destino = `${destino}${catFilter}&${namFilter}`;
-    }else{
-      destino = `${destino}${catFilter}${namFilter}`;
-    }
-    setFilterDestination(destino);
+    setFilterDestination(category + itemName);
   },[category,itemName])
 
   return (
@@ -46,12 +36,20 @@ const Searchbox = (props) => {
               Todos
             </DropdownToggle>
             <DropdownMenu>
-              <DropdownItem id="-1" key="-1" onClick={selectOption}>Todos</DropdownItem>
-              {props.categorias.map(categoria => <DropdownItem id={categoria.id} key={categoria.key} onClick={selectOption}>{categoria.descripcion}</DropdownItem>)}
+              <NavLink key={-1} to="/">
+                <DropdownItem id="-1" onClick={selectOption}>Todos</DropdownItem>
+              </NavLink>
+              {props.categorias.map(categoria =>
+                <NavLink key={categoria.key} to={`/categories/${categoria.id}`} >
+                  <DropdownItem id={categoria.id} onClick={selectOption}>
+                    {categoria.descripcion}
+                  </DropdownItem>
+                </NavLink>
+              )}
             </DropdownMenu>
             </UncontrolledButtonDropdown>
         </InputGroupAddon>
-        <Input placeholder="Buscar Producto..." style={{backgroundClip:"border-box"}} onChange={nameItemChange}/>
+        <Input id="spellFilter" placeholder="Buscar Producto..." style={{backgroundClip:"border-box"}} onChange={nameItemChange}/>
         <InputGroupAddon addonType="append">
           <NavLink to={filterDestination} style={{display:"inline-flex",padding:0,margin:0}}>
             <Button color="primary" style={{padding:".25rem .5rem",fontSize:".875rem",borderRadius:".2rem",borderTopLeftRadius: 0,borderBottomLeftRadius: 0}}>{lupita}</Button>
