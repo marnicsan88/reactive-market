@@ -12,7 +12,7 @@ import "./css/styles.css"
 export default function Checkout(){
     const [orderId,setOrderId] = useState("");
     const [loading,isLoading] = useState(false);
-    const {cart,calcularTotal,setCart} = useContext(CartContext);
+    const {cart,calcularTotal,vaciarCarrito} = useContext(CartContext);
 
     const crearOrden = (cliente) =>{
         isLoading(true)
@@ -73,8 +73,7 @@ export default function Checkout(){
                 })
                 //ejecuto el batch
                 batch.commit().then(res => {
-                    console.log(res);
-                    setCart([]);
+                    vaciarCarrito();
                 })
                 .catch(error => {
                     console.log("ERROR ",error)
