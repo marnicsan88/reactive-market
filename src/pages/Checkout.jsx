@@ -42,7 +42,6 @@ export default function Checkout(){
         const orden = db.collection("orders").doc(orderId)
         //Recupero los items de la orden creada
         let ordenItems
-        debugger
         orden.get().then((doc) => {
             if(!doc.exists){
                 console.log("No Orden");

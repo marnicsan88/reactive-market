@@ -10,7 +10,7 @@ export default function OrdersContainer({order}){
         const dia = `${hoy.getDate()}/${hoy.getMonth()+1}/${hoy.getFullYear()}`
         const hora = `${hoy.getHours()}:${hoy.getMinutes()}:${hoy.getSeconds()}`
         setFecha(`${dia} ${hora}`)
-    },[])
+    },[order])
 
     return(
             <Container fluid style={{minHeight:"49vh"}}>

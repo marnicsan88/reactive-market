@@ -22,6 +22,8 @@ const Item = (props) => {
                                     break;
       case "voThitRQPCuzMsUSM7r3":  setCategoryClass("Hechizo");
                                     break;
+      default:                      setCategoryClass("");
+                                    break;
     }
   }
 

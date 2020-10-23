@@ -7,8 +7,9 @@ A traves de este Ecommerce podrás adquirir disitintos hechizos, conjuros y male
 La Home te dará una cálida bienvenida y te mostrará el catalogo de hechizos, los cuales podran ser filtrados por categoria desde la barra de navegacion.
 
 Accediendo al detalle de cada hechizo se podrá apreciar el efecto que causa el hechizo y se podrá indicar la cantidad que deseamos adquirir de dicho hechizo, siempre y cuando haya stock disponible.
+La cantidad maxima disponible para comprar dependerá del stock del hechizo. En caso que no hubiera stock disponible, el sistema no permitirá agregar el hechizo al carrito y mostrará una etiqueta indicando que no hay stock disponible.
 
-Los hechizos se irán agregando al carrito de compras, al cual se podrá acceder desde el icono de carrito en la barra de navegación.
+El carrito de compras con los hechizos agregados, se podrá acceder desde el icono de carrito en la barra de navegación.
 
 Una vez conforme con los hechizos agregados al carrito podremos pasar al checkout donde se deberá completar un formulario de datos personales para poder finalizar la compra y generar la correspondiente orden de compra.
 

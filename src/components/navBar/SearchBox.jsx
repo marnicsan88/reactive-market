@@ -1,32 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, {useContext } from 'react';
 import { InputGroup, InputGroupAddon, Button, Input } from 'reactstrap';
 import { UncontrolledButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch} from '@fortawesome/free-solid-svg-icons'
 import { NavLink } from 'react-router-dom'
+import {CategoryContext} from "../../context/categoryContext"
 import './css/searchBoxStyles.css';
 
 const Searchbox = (props) => {
-  const [category,setCategory] = useState("");
-  const [itemName,setItemName] = useState("");
-  const [filterDestination,setFilterDestination] = useState("");
+  const {setCategory,setItemFilter,filterDestination} = useContext(CategoryContext)
 
   const lupita = <FontAwesomeIcon icon={faSearch} />
 
   const selectOption = (evt) => {
     document.querySelectorAll("button.dropdown-toggle")[0].textContent = evt.target.textContent;
     document.querySelector("#spellFilter").value = "";
-    setItemName("");
+    setItemFilter("")
     evt.target.id != "-1" ? setCategory(`/categories/${evt.target.id}/`) : setCategory(`/`);
   }
 
   const nameItemChange = (evt) => {
-    setItemName(`search/${evt.target.value}`)
+    setItemFilter(`search/${evt.target.value}`)
   }
-
-  useEffect(() => {
-    setFilterDestination(category + itemName);
-  },[category,itemName])
 
   return (
       <InputGroup className="search-width" size="sm" style={{maxWidth:"5rem"}}>

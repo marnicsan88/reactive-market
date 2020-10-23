@@ -9,6 +9,7 @@ import Search from './pages/Search';
 import Orders from './pages/Orders';
 import ItemDetailContainer from './pages/ItemDetailContainer';
 import {CartProvider} from './context/cartContext';
+import {CategoryProvider} from './context/categoryContext';
 
 import './App.css';
 
@@ -17,12 +18,14 @@ export default function App() {
     <div style={{height:"100vh"}}>
       <BrowserRouter>
         <CartProvider>
-          <NavPpal/>
+          <CategoryProvider>
+            <NavPpal/>
+          </CategoryProvider>
           <Switch>
             <Route exact path="/">
               <Home greeting="Bienvenido" nombre="Tincho"/>
             </Route>
-            <Route exact path={["/categories/:idCategoria","/categories/:idCategoria/search/:filtro","/search/:filtro","/search"]}>
+            <Route exact path={["/categories/:idCategoria","/categories/:idCategoria/search/:filtro","/search/:filtro"]}>
               <Search />
             </Route>
             <Route exact path="/item/:idItem">

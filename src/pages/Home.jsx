@@ -9,7 +9,6 @@ const Home = (props) => {
     const [loading,isLoading] = useState(true);
 
     useEffect(() => {
-        document.querySelectorAll("button.dropdown-toggle")[0].textContent = "Todos";
         const db = getFirestore();
         const itemCollection = db.collection("spells").orderBy("nombre").limit(20)
         itemCollection.get().then((querySnapshot) => {

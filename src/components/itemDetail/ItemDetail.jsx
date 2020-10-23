@@ -12,7 +12,7 @@ const ItemDetail = (props) => {
     const [cantidad,setCantidad] = useState(params.initial)
     const [sePuedeComprar,setSePuedeComprar] = useState(false)
     const [modal, setModal] = useState(false);
-    const {cart,agregarAlCarrito} = useContext(CartContext);
+    const {agregarAlCarrito} = useContext(CartContext);
     
     const toggle = () => {
         if(modal)
