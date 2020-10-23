@@ -1,14 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import {useLocation} from 'react-router-dom';
 import {getFirestore} from '../firebase';
 import Loading from '../components/loading/Loading';
 import ItemListContainer from '../components/itemList/ItemListContainer'
 import {useParams} from 'react-router-dom';
 import "./css/styles.css"
-
-const useQuery = () => {
-    return new URLSearchParams(useLocation().search);
-}
 
 export default function Search(){
     const {idCategoria} = useParams();
