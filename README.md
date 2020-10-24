@@ -5,6 +5,7 @@ Un Ecommerce simple desarrollado con React y Hooks
 ## Tu Ecommerce de Potter Hechizos :shopping_cart: :mage:
 A traves de este Ecommerce podrás adquirir disitintos hechizos, conjuros y maleficios del mundo de Harry Potter.
 La Home te dará una cálida bienvenida y te mostrará el catalogo de hechizos, los cuales podran ser filtrados por categoria desde la barra de navegacion.
+También se podrán buscar hechizos segun su nombre. La busqueda por nombre debe ser exacta respetando mayusculas y minusculas.
 
 Accediendo al detalle de cada hechizo se podrá apreciar el efecto que causa el hechizo y se podrá indicar la cantidad que deseamos adquirir de dicho hechizo, siempre y cuando haya stock disponible.
 La cantidad maxima disponible para comprar dependerá del stock del hechizo. En caso que no hubiera stock disponible, el sistema no permitirá agregar el hechizo al carrito y mostrará una etiqueta indicando que no hay stock disponible.
